@@ -1,0 +1,33 @@
+# ユーザテーブル
+type User
+  @model
+  @auth(
+    rules: [
+      {
+        allow: private
+        provider: userPools
+        operations: [read, create, update, delete]
+      }
+      {
+        allow: private
+        provider: iam
+        operations: [read, create, update, delete]
+      }
+    ]
+  ) {
+  id: ID! @primaryKey
+  dispName: String!
+  mail: String!
+  role: Int!
+  spApiFlg: Boolean!
+  lineFlg: Boolean!
+  customerId: String
+  stripe: AWSJSON
+  secret: AWSJSON
+  settings: AWSJSON
+}
+
+# Lambda関数呼び出し
+type Query {
+  CallFuncAddUser(input: String!): String @function(name: "fpaAddUser-${env}")
+}

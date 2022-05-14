@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "auth": {
+      "fleapriceadj9b4fe649": [
+        "create",
+        "read"
+      ]
+    },
+    "api": {
+      "FleaPriceAdjAPI": [
+        "Query",
+        "Mutation"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

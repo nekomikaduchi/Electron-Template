@@ -1,0 +1,131 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <fa-icon [icon]="['fas', 'filter']"></fa-icon>
+    <span class="ml-1">
+      詳細フィルタ
+    </span>
+  </h4>
+</div>
+<div class="modal-body p-0">
+  <div class="card bg-secondary shadow">
+    <div class="card-body px-lg-3 py-lg-3">
+      <form role="form">
+        <div class="form-group mb-3">
+          <label class="form-control-label"> 監視</label>
+          <div class="row">
+            <div class="custom-control custom-radio col-4 pr-0 mb-0">
+              <input
+                class="custom-control-input"
+                id="watch-1"
+                name="watch-radio"
+                type="radio"
+                value="1"
+                [checked]="watch == 1"
+                (change)="changeWatchRadio($event)"
+              >
+              <label
+                class="custom-control-label"
+                for="watch-1"
+              > 指定なし </label>
+            </div>
+            <div class="custom-control custom-radio col-4 pr-0 mb-0">
+              <input
+                class="custom-control-input"
+                id="watch-2"
+                name="watch-radio"
+                type="radio"
+                value="2"
+                [checked]="watch == 2"
+                (change)="changeWatchRadio($event)"
+              >
+              <label
+                class="custom-control-label"
+                for="watch-2"
+              > ON </label>
+            </div>
+            <div class="custom-control custom-radio col-4 pl-4 pr-0 mb-0">
+              <input
+                class="custom-control-input"
+                id="watch-3"
+                name="watch-radio"
+                type="radio"
+                value="3"
+                [checked]="watch == 3"
+                (change)="changeWatchRadio($event)"
+              >
+              <label
+                class="custom-control-label"
+                for="watch-3"
+              > OFF </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label class="form-control-label"> 通知価格 </label>
+          <div class="row">
+            <div class="custom-control custom-radio col-4 pr-0 mb-0">
+              <input
+                class="custom-control-input"
+                id="notify-1"
+                name="notify-radio"
+                type="radio"
+                value="1"
+                [checked]="notify == 1"
+                (change)="changeNotifyRadio($event)"
+              >
+              <label
+                class="custom-control-label"
+                for="notify-1"
+              > 指定なし </label>
+            </div>
+            <div class="custom-control custom-radio col-4 pr-0 mb-0">
+              <input
+                class="custom-control-input"
+                id="notify-2"
+                name="notify-radio"
+                type="radio"
+                value="2"
+                [checked]="notify == 2"
+                (change)="changeNotifyRadio($event)"
+              >
+              <label
+                class="custom-control-label"
+                for="notify-2"
+              > 設定済 </label>
+            </div>
+            <div class="custom-control custom-radio col-4 pl-4 pr-0 mb-0">
+              <input
+                class="custom-control-input"
+                id="notify-3"
+                name="notify-radio"
+                type="radio"
+                value="3"
+                [checked]="notify == 3"
+                (change)="changeNotifyRadio($event)"
+              >
+              <label
+                class="custom-control-label"
+                for="notify-3"
+              > 未設定 </label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal-footer justify-content-center">
+  <div class="text-center">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="onOkClick()"
+    >保存する</button>
+    <button
+      type="button"
+      class="btn btn-white"
+      ngbAutofocus
+      (click)="modalRef.close()"
+    >キャンセル</button>
+  </div>
+</div>

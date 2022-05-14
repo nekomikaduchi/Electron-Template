@@ -1,0 +1,160 @@
+<div
+  class="p-3"
+  style="background-color: #fafafa;"
+>
+  <button
+    class="btn btn-sm btn-primary"
+    type="button"
+    (click)="openCreateUserDialog()"
+  >
+    ユーザー作成
+  </button>
+</div>
+
+<div class="container-fluid">
+  <div class="dataTables_wrapper">
+    <ngx-datatable
+      class="bootstrap"
+      [rows]="temp"
+      [loadingIndicator]="true"
+      [columnMode]="'flex'"
+      [headerHeight]="50"
+      [footerHeight]="55"
+      rowHeight="auto"
+      [limit]="entries != -1 ? entries : undefined"
+      [reorderable]="true"
+      (activate)="onActivate($event)"
+    >
+      <ngx-datatable-column
+        name="表示名"
+        prop="dispName"
+        [flexGrow]="1"
+        [draggable]="false"
+        headerClass="table-header"
+      >
+        <!-- サンプルです。こうやって書く -->
+        <ng-template
+          let-column="column"
+          ngx-datatable-header-template
+        >
+          {{ column.name }}
+        </ng-template>
+        <ng-template
+          let-value="value"
+          ngx-datatable-cell-template
+        >
+          <div>
+            {{ value }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        name="メールアドレス"
+        prop="mail"
+        [flexGrow]="2"
+        [draggable]="false"
+        headerClass="table-header"
+      >
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        name="権限"
+        prop="role"
+        [flexGrow]="1"
+        [draggable]="false"
+        headerClass="table-header"
+      >
+        <ng-template
+          let-value="value"
+          ngx-datatable-cell-template
+        >
+          <div>
+            {{ roleMap[value] }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        name="ステータス"
+        prop="status"
+        [flexGrow]="1"
+        [draggable]="false"
+        headerClass="table-header"
+      >
+        <ng-template
+          let-value="value"
+          ngx-datatable-cell-template
+        >
+          <div
+            class="invalid"
+            [ngClass]="{ 'valid' : value == 'trialing' || value == 'active' }"
+            *ngIf="value"
+          >
+            {{ statusMap[value] }}
+          </div>
+          <div *ngIf="!value">
+            {{ statusMap[value] }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        name="Stripe顧客ID"
+        prop="customerId"
+        [flexGrow]="1"
+        [draggable]="false"
+        headerClass="table-header"
+      >
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        name="次回更新日"
+        prop="nextDate"
+        [flexGrow]="1"
+        [draggable]="false"
+        headerClass="table-header"
+      >
+        <ng-template
+          let-value="value"
+          ngx-datatable-cell-template
+        >
+          <div>
+            {{ value | date: "yyyy/MM/dd" }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        name="契約日"
+        prop="startDate"
+        [flexGrow]="1"
+        [draggable]="false"
+        headerClass="table-header"
+      >
+        <ng-template
+          let-value="value"
+          ngx-datatable-cell-template
+        >
+          <div>
+            {{ value | date: "yyyy/MM/dd" }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        name="解約日"
+        prop="endDate"
+        [flexGrow]="1"
+        [draggable]="false"
+        headerClass="table-header"
+      >
+        <ng-template
+          let-row="row"
+          let-value="value"
+          ngx-datatable-cell-template
+        >
+          <div *ngIf="row['cancelPeriodEnd']">
+            <font color="red">解約予約中</font>
+          </div>
+          <div *ngIf="!row['cancelPeriodEnd']">
+            {{ value | date: "yyyy/MM/dd" }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>

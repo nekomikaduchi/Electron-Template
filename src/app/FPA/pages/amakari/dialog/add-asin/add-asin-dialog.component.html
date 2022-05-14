@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <fa-icon [icon]="['fas', 'file-medical']"></fa-icon>
+    <span class="ml-1">
+      ASIN取込
+    </span>
+  </h4>
+</div>
+<div class="modal-body p-0">
+  <div class="card bg-secondary shadow">
+    <div class="card-body px-lg-3 py-lg-3">
+      <form
+        role="form"
+        [formGroup]="asinForm"
+      >
+        <div class="form-group mb-2">
+          <label for="asinList">ASIN <small>※最大30件</small></label>
+          <textarea
+            class="form-control"
+            [ngClass]="{ 'ng-alert-border': asinList?.invalid && (asinList?.dirty || asinList?.touched) }"
+            formControlName="asinList"
+            id="asinList"
+            rows="10"
+          ></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal-footer justify-content-center">
+  <div class="text-center">
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="asinForm.invalid"
+      (click)="onOkClick()"
+    >ASINを登録する</button>
+    <button
+      type="button"
+      class="btn btn-white"
+      ngbAutofocus
+      (click)="modalRef.close()"
+    >キャンセル</button>
+  </div>
+</div>

@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+@import "~@aws-amplify/ui-angular/theme.css";
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif !important;
+}
+
+/** SweetAlartの設定 */
+.swal2-icon {
+  width: 4em !important;
+  height: 4em !important;
+  margin: 1.5em auto 0.5em !important;
+  .swal2-icon-content {
+    font-size: 45px !important;
+  }
+}
+.swal2-actions {
+  .btn {
+    min-width: 120px;
+    font-weight: 400 !important;
+  }
+}
+/** SweetAlartの設定 */
+
+/** Loading の設定 */
+.loading-width {
+  .modal-content {
+    margin: auto;
+    padding: 20px;
+    min-width: 60px;
+    width: fit-content;
+  }
+}
+/** Loading の設定 */
+
+/** ngx-datatable */
+.datatable-icon-up::before,
+.datatable-icon-down::before,
+.datatable-icon-sort-unset::before {
+  font-size: 18px;
+}
+/** ngx-datatable */

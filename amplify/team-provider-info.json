@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fleapriceadj-dev-151851-authRole",
+      "UnauthRoleArn": "arn:aws:iam::354425663214:role/amplify-fleapriceadj-dev-151851-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::354425663214:role/amplify-fleapriceadj-dev-151851-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-fleapriceadj-dev-151851-deployment",
+      "UnauthRoleName": "amplify-fleapriceadj-dev-151851-unauthRole",
+      "StackName": "amplify-fleapriceadj-dev-151851",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:354425663214:stack/amplify-fleapriceadj-dev-151851/908e1770-d284-11ec-8ff0-0a4e179384a7",
+      "AmplifyAppId": "d137g1f5i2cp62"
+    },
+    "categories": {
+      "auth": {
+        "fleapriceadj9b4fe649": {}
+      },
+      "function": {
+        "fpaAddUser": {
+          "deploymentBucketName": "amplify-fleapriceadj-dev-151851-deployment",
+          "s3Key": "amplify-builds/fpaAddUser-5758726c436965654954-build.zip"
+        }
+      }
+    }
+  }
+}

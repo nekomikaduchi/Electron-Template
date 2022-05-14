@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "FleaPriceAdjAPI",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\MySource\\ElectronPrj\\FleaPriceAdj\\amplify\\backend\\api\\FleaPriceAdjAPI\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authfleapriceadj9b4fe649"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AWS_IAM"
+      }
+    ],
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    }
+  }
+}
