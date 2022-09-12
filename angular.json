@@ -3,56 +3,74 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FleaPriceAdj": {
+    "electron_angular_prj": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
-        },
-        "@schematics/angular:application": {
-          "strict": true
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "src/front_src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "@aws-crypto/crc32",
+              "@aws-crypto/sha256-browser",
+              "@aws-crypto/sha256-js",
+              "buffer",
+              "camelcase-keys",
+              "crypto-js/enc-base64",
+              "crypto-js/hmac-sha256",
+              "crypto-js/core",
+              "crypto-js/lib-typedarrays",
+              "crypto-js/sha256",
+              "fast-xml-parser",
+              "isomorphic-unfetch",
+              "lodash/cloneDeep",
+              "lodash/get",
+              "lodash/isEmpty",
+              "lodash/isEqual",
+              "lodash/includes",
+              "qrcode",
+              "style-dictionary/lib/utils/deepExtend",
+              "style-dictionary/lib/utils/flattenProperties",
+              "ulid",
+              "url",
+              "uuid",
+              "xstate/lib/actions"
+            ],
             "outputPath": "dist",
-            "index": "src/index.html",
-            "main": "src/main.ts",
+            "index": "src/front_src/index.html",
+            "main": "src/front_src/main.ts",
             "budgets": [
               {
                 "type": "initial",
-                "maximumWarning": "3mb",
+                "maximumWarning": "1mb",
                 "maximumError": "3mb"
               },
               {
                 "type": "anyComponentStyle",
-                "maximumWarning": "40kb",
+                "maximumWarning": "20kb",
                 "maximumError": "40kb"
               }
             ],
-            "polyfills": "src/polyfills.ts",
+            "polyfills": "src/front_src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss",
-              "node_modules/@swimlane/ngx-datatable/themes/bootstrap.scss",
-              "node_modules/@swimlane/ngx-datatable/assets/icons.css"
-            ],
+            "assets": ["src/front_src/favicon.ico", "src/front_src/assets"],
+            "styles": ["src/front_src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.amplify_dev.ts"
+                  "replace": "src/front_src/environments/environment.ts",
+                  "with": "src/front_src/environments/environment.amplify_prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -60,8 +78,17 @@
             "amplify-dev": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.amplify_dev.ts"
+                  "replace": "src/front_src/environments/environment.ts",
+                  "with": "src/front_src/environments/environment.amplify_dev.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "amplify-staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/front_src/environments/environment.ts",
+                  "with": "src/front_src/environments/environment.amplify_staging.ts"
                 }
               ],
               "outputHashing": "all"
@@ -69,8 +96,8 @@
             "amplify-prod": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.amplify_prod.ts"
+                  "replace": "src/front_src/environments/environment.ts",
+                  "with": "src/front_src/environments/environment.amplify_prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -90,10 +117,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "FleaPriceAdj:build:production"
+              "browserTarget": "electron_angular_prj:build:production"
             },
             "development": {
-              "browserTarget": "FleaPriceAdj:build:development"
+              "browserTarget": "electron_angular_prj:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -101,27 +128,23 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FleaPriceAdj:build"
+            "browserTarget": "electron_angular_prj:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "main": "src/front_src/test.ts",
+            "polyfills": "src/front_src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
-            ],
+            "assets": ["src/front_src/favicon.ico", "src/front_src/assets"],
+            "styles": ["src/front_src/styles.scss"],
             "scripts": []
           }
         }
       }
     }
-  },
-  "defaultProject": "FleaPriceAdj"
+  }
 }

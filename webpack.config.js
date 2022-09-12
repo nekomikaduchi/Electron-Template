@@ -4,10 +4,10 @@ module.exports = {
   mode: process.env.NODE_ENV || "development",
   target: "electron-main",
   entry: {
-    main: path.join(__dirname, "main_src/ts/main.ts"),
+    main: path.join(__dirname, "src/main_src/ts/main.ts"),
   },
   output: {
-    path: path.join(__dirname, "main_src/js"),
+    path: path.join(__dirname, "src/main_src/js"),
     filename: "[name].js",
   },
   node: {

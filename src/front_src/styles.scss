@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@aws-amplify/ui-angular/theme.css";
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+/** Loading の設定 */
+.loading-width {
+  .modal-content {
+    margin: auto;
+    padding: 20px;
+    min-width: 60px;
+    width: fit-content;
+  }
+}
+/** Loading の設定 */

@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">名前</th>
+      <th scope="col">メール</th>
+      <th scope="col">ロール</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ user.dispName }}
+      </td>
+      <td>{{ user.mail }}</td>
+      <td>{{ user.role }}</td>
+    </tr>
+  </tbody>
+</table>
