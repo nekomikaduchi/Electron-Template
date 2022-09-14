@@ -40,3 +40,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# 以下フォルダは無視
+release/
+log/
+src/main_src/js/

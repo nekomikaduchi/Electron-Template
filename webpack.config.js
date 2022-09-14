@@ -5,6 +5,7 @@ module.exports = {
   target: "electron-main",
   entry: {
     main: path.join(__dirname, "src/main_src/ts/main.ts"),
+    preload: path.join(__dirname, "src/main_src/ts/preload.ts"),
   },
   output: {
     path: path.join(__dirname, "src/main_src/js"),
@@ -26,4 +27,12 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"],
   },
+  externals: [
+    // 以下はバンドル対象から外す。
+    {
+      fsevents: "commonjs fsevents",
+      "electron-reload": "commonjs electron-reload",
+      spawn: "commonjs spawn",
+    },
+  ],
 };

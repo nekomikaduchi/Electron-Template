@@ -18,26 +18,26 @@ export class UserService {
     let nextToken: string | null | undefined = undefined;
     let users: Array<any> = [];
 
-    // リクエストのループ
-    while (true) {
-      const response: any = await this.apiService.ListUsers(
-        undefined,
-        undefined,
-        UserService.NUMBER,
-        undefined
-      );
-      users = users.concat(
-        response.items.filter(
-          (user: any) => !user?._deleted
-        ) as unknown as Array<any>
-      );
-      // nextToken
-      nextToken = response.nextToken;
+    // // リクエストのループ
+    // while (true) {
+    //   const response: any = await this.apiService.ListUsers(
+    //     undefined,
+    //     undefined,
+    //     UserService.NUMBER,
+    //     undefined
+    //   );
+    //   users = users.concat(
+    //     response.items.filter(
+    //       (user: any) => !user?._deleted
+    //     ) as unknown as Array<any>
+    //   );
+    //   // nextToken
+    //   nextToken = response.nextToken;
 
-      if (!nextToken) {
-        break;
-      }
-    }
+    //   if (!nextToken) {
+    //     break;
+    //   }
+    // }
     return users;
   }
 }

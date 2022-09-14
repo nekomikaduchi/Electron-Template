@@ -5,7 +5,7 @@ import { AuthenticatorService } from '@aws-amplify/ui-angular';
 
 import { BehaviorSubject } from 'rxjs';
 
-import { UserBase, UserEx } from '../model/user';
+import { UserBase } from '../model/user';
 import { CustomApiService } from './customApi.service';
 import { ROLE_TYPE } from '../common/enum';
 
@@ -70,9 +70,10 @@ export class AuthService {
       .then((user: any) => {
         const { payload } = user?.getIdToken();
         let id = payload?.sub;
-        return this.apiService.GetUser(id);
+        // return this.apiService.GetUser(id);
+        return Promise.resolve(new UserBase());
       })
-      .then((user: UserEx) => {
+      .then((user: UserBase) => {
         this.fireCurrentUser(new UserBase(user));
         return true;
       })
