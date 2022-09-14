@@ -6,17 +6,17 @@
     "ng": "ng",
     "start": "ng serve -o",
     "electron": "electron .",
-    "build:ng-watch": "ng build -c development --base-href ./ --watch",
+    "ng-watch": "ng build -c development --base-href ./ --watch",
+    "mn-watch": "npx webpack --watch",
+    "watch": "run-p mn-watch ng-watch",
     "build:ng-dev": "ng build -c amplify-dev --base-href ./",
     "build:ng-prod": "ng build -c amplify-prod --base-href ./",
-    "build:mn-watch": "npx webpack --watch",
     "build:mn-dev": "npx webpack --mode development",
     "build:mn-prod": "npx webpack --mode production",
-    "build:all-watch": "run-p build:mn-watch build:ng-watch",
     "build:all-dev": "run-p build:mn-dev build:ng-dev",
     "build:all-prod": "run-p build:mn-prod build:ng-prod",
-    "builder": "electron-builder --win --x64",
-    "build:win": "run-s build:mn-prod build:ng-prod builder"
+    "install-build:win": "electron-builder --win --x64",
+    "install-build": "run-s build:all-prod install-build:win"
   },
   "build": {
     "appId": "sample.xxxx.xxxx",
