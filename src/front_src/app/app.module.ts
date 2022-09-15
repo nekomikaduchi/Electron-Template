@@ -14,14 +14,14 @@ import { AdminLayoutComponent } from './SamplePrj/layouts/admin-layout/admin-lay
 import { UserListComponent } from './SamplePrj/pages/user/user-list.component';
 
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
-import { Translations } from '@aws-amplify/ui-components';
-import Amplify, { I18n } from 'aws-amplify';
+import { Amplify, I18n } from 'aws-amplify';
+import { translations } from '@aws-amplify/ui';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-I18n.putVocabularies(Translations);
+I18n.putVocabularies(translations);
 I18n.setLanguage('ja');
 
-// import amplify from '../aws-exports';
-// Amplify.configure(amplify);
+// import awsExports from '../aws-exports';
+// Amplify.configure(awsExports);
 
 @NgModule({
   declarations: [
