@@ -20,8 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 I18n.putVocabularies(translations);
 I18n.setLanguage('ja');
 
-// import awsExports from '../aws-exports';
-// Amplify.configure(awsExports);
+import awsExports from '../aws-exports';
+Amplify.configure(awsExports);
 
 @NgModule({
   declarations: [
