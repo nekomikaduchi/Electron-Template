@@ -4,15 +4,15 @@ import { LoginComponent } from './SamplePrj/pages/login/login.component';
 
 import { AdminLayoutComponent } from './SamplePrj/layouts/admin-layout/admin-layout.component';
 import { UserListComponent } from './SamplePrj/pages/user/user-list.component';
-// import { SettingsComponent } from './RAH/pages/settings/settings.component';
-// import { AmaKariListComponent } from './RAH/pages/amakari/amakari-list.component';
 
 import { LoginGuard } from './shared/guard/login.guard';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'home',
@@ -20,22 +20,6 @@ const routes: Routes = [
     canActivate: [LoginGuard],
 
     children: [
-      // {
-      //   path: 'research-list',
-      //   component: ResearchListComponent,
-      // },
-      // {
-      //   path: 'research-ranking',
-      //   component: ResearchRankingComponent,
-      // },
-      // {
-      //   path: 'research-keyword',
-      //   component: ResearchKeywordComponent,
-      // },
-      // {
-      //   path: 'amakari-list',
-      //   component: AmaKariListComponent,
-      // },
       {
         path: 'user',
         component: UserListComponent,
@@ -44,6 +28,7 @@ const routes: Routes = [
       //   path: 'settings',
       //   component: SettingsComponent,
       // },
+      { path: '', redirectTo: 'user', pathMatch: 'full' },
     ],
   },
   { path: '', redirectTo: 'login', pathMatch: 'prefix' },

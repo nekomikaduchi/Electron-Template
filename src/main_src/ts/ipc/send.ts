@@ -6,13 +6,9 @@ import { mainWindow } from '../main';
 //----------------------------------------
 
 /**
- * サンプルテストメソッド
+ * ログイン画面へEmailを引き渡す
+ * @param email
  */
-export const testSendMethod = () => {
-  // ！！これはテスト用です！！
-  // 10秒置きに乱数をレンダラープロセスに送る
-  setInterval(() => {
-    const rnd = Math.floor(Math.random());
-    mainWindow?.webContents.send('onTestRandom', rnd);
-  }, 10000);
+export const sendLoginEmail = (email: string) => {
+  mainWindow?.webContents.send('onSendLoginEmail', email);
 };

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth, Hub } from 'aws-amplify';
+import { Amplify, Auth, Hub } from 'aws-amplify';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 
 import { BehaviorSubject } from 'rxjs';
 
-import { UserBase } from '../model/user';
+import { UserBase, UserEx } from '../model/user';
 import { CustomApiService } from './customApi.service';
 import { ROLE_TYPE } from '../common/enum';
 
@@ -70,16 +70,23 @@ export class AuthService {
       .then((user: any) => {
         const { payload } = user?.getIdToken();
         let id = payload?.sub;
-        // return this.apiService.GetUser(id);
-        return Promise.resolve(new UserBase());
+        return this.apiService.GetUserEx(id);
       })
-      .then((user: UserBase) => {
+      .then((user: UserEx) => {
         this.fireCurrentUser(new UserBase(user));
+        // 認証をcognitoユーザプールに設定
+        Amplify.configure({
+          aws_appsync_authenticationType: 'AMAZON_COGNITO_USER_POOLS',
+        });
         return true;
       })
       .catch((error: any) => {
         console.log(error);
         this.fireCurrentUser(new UserBase());
+        // 認証をiamに設定
+        Amplify.configure({
+          aws_appsync_authenticationType: 'AWS_IAM',
+        });
         return false;
       });
   }

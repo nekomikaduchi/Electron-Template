@@ -1,4 +1,7 @@
 import { ipcMain } from 'electron';
+import ElectronStore from 'electron-store';
+// 保存領域
+const eleStore = new ElectronStore();
 
 //----------------------------------------
 // IPC通信
@@ -12,5 +15,13 @@ export const registerListener = () => {
    */
   ipcMain.handle('send-test-message', (event, message: string) => {
     return `${message}にゃん`;
+  });
+
+  /**
+   * ログインした時のメールアドレスを記録する
+   * @param email メールアドレス
+   */
+  ipcMain.handle('save-login-email', (event, email: string) => {
+    eleStore.set('login-email', email);
   });
 };

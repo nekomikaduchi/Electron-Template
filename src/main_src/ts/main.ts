@@ -4,13 +4,18 @@ import {
   BrowserWindow,
   Menu,
   MenuItemConstructorOptions,
+  session,
   shell,
 } from 'electron';
+
+import ElectronStore from 'electron-store';
+// 保存領域
+const eleStore = new ElectronStore();
 
 const url = require('url');
 const path = require('path');
 
-import { testSendMethod } from './ipc/send';
+import { sendLoginEmail } from './ipc/send';
 import { registerListener } from './ipc/listen';
 
 // デバッグモードフラグ
@@ -30,11 +35,15 @@ if (!gotTheLock) {
 /**
  * メインウィンドウの作成
  */
-const createMainWindow = () => {
+const createMainWindow = async () => {
+  // キャッシュの削除
+  await session.defaultSession.clearCache();
+  await session.defaultSession.clearStorageData();
+
   // メインウィンドウを作成
   mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
+    width: 1400,
+    height: 1000,
     minWidth: 1200,
     minHeight: 800,
     webPreferences: {
@@ -47,13 +56,19 @@ const createMainWindow = () => {
   });
 
   // メインウィンドウに表示するURLを指定
-  mainWindow.loadURL(
-    url.format({
-      pathname: path.join(__dirname, `../../../dist/index.html`),
-      protocol: 'file:',
-      slashes: true,
-    })
-  );
+  mainWindow
+    .loadURL(
+      url.format({
+        pathname: path.join(__dirname, `../../../dist/index.html`),
+        protocol: 'file:',
+        slashes: true,
+      })
+    )
+    .then(() => {
+      // メイン → レンダラーへIPC通信
+      // ログイン画面へEmailを引き渡す
+      sendLoginEmail((eleStore.get('login-email') as string) || '');
+    });
 
   // デベロッパーツールの起動
   // mainWindow.webContents.openDevTools();
@@ -62,10 +77,6 @@ const createMainWindow = () => {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
-
-  // メイン → レンダラーへIPC通信
-  // サンプルテスト用です。
-  testSendMethod();
 };
 
 /**

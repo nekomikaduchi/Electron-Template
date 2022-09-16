@@ -1,16 +1,7 @@
-// import { User } from '../../API.service';
+import { User } from '../../API.service';
 import { ROLE_TYPE } from '../common/enum';
 
-export interface UserEx {
-  /** ユーザーID */
-  id: string;
-  /** ユーザー名(表示用) */
-  dispName: string;
-  /** メールアドレス */
-  mail: string;
-  /** ロール */
-  role: ROLE_TYPE;
-}
+export interface UserEx extends User {}
 
 export class UserBase {
   /** ユーザーID */

@@ -8,6 +8,14 @@ contextBridge.exposeInMainWorld('myAPI', {
   // 以下 レンダラー → メイン
   //
   /////////////////////////////
+  /**
+   * ログインした時のメールアドレスを記録する
+   * @param email メールアドレス
+   * @returns
+   */
+  saveLoginEmail: async (email: string) => {
+    return await ipcRenderer.invoke('save-login-email', email);
+  },
   sendTestMessage: async (message: string) => {
     return await ipcRenderer.invoke('send-test-message', message);
   },

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { from, Observable, of, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,17 +8,18 @@ export class ElectronService {
   public dataSubject = new Subject<any>(); // 追加
   public dataState = this.dataSubject.asObservable(); // 追加
 
+  public loginEmail: string = '';
+
   private eleAPI: any;
 
   constructor() {
     if (this.isElectron()) {
       this.eleAPI = (window as any).myAPI;
-      // メインプロセスからの通知受信（TEST用）
-      this.eleAPI.on('onTestRandom', (event: any, args: any) => {
-        console.log(args);
-      });
+
+      // リスナー登録
+      this.registerListener();
     } else {
-      console.warn('App not running inside Electron!');
+      console.warn('Electronじゃないです！');
     }
   }
 
@@ -26,21 +27,29 @@ export class ElectronService {
    * Electronからの起動かどうか
    * @returns
    */
-  private isElectron(): boolean {
+  private isElectron = (): boolean => {
     // @ts-ignore
     return !!((window as any) && (window as any).myAPI);
-  }
+  };
 
   /**
-   * メインプロセスにデータを送信(テスト用)
-   * @param message メッセージ
+   * メインプロセスからの通知を受信するリスナー登録
+   */
+  private registerListener = (): void => {
+    // メインプロセスからログインEmailを受信
+    this.eleAPI.on('onSendLoginEmail', (event: any, email: string) => {
+      this.loginEmail = email;
+    });
+  };
+
+  /**
+   * ログインした時のメールアドレスをElectronStoreに記録する
+   * @param email メールアドレス
    * @returns 戻り値
    */
-  public async sendTestMessage(message: string): Promise<any> {
+  public async saveLoginEmail(email: string): Promise<any> {
     if (this.eleAPI) {
-      return await this.eleAPI?.sendTestMessage(message);
-    } else {
-      alert('Electronじゃないので実行できません。');
+      return await this.eleAPI?.saveLoginEmail(email);
     }
   }
 
