@@ -52,6 +52,27 @@
   2. サインイン方法を設定してください → Email
   3. 追加設定を行いますか？ → No, I am done
 
+  `amplify update auth`
+
+  1. What do you want to do? → Walkthrough all the auth configurations
+  2. Select the authentication/authorization services that you want to use → User Sign-Up, Sign-In, connected with AWS IAM controls
+  3. Allow unauthenticated logins? → Yes
+  4. Do you want to enable 3rd party authentication providers in your identity pool? → No
+  5. Do you want to add User Pool Groups? → No
+  6. Do you want to add an admin queries API? → No
+  7. Multifactor authentication (MFA) user login options → OFF
+  8. Email based user registration/forgot password → Enabled
+  9. Specify an email verification subject → Your verification code（任意）
+  10. Specify an email verification message → (Your verification code is {####})（任意）
+  11. Do you want to override the default password policy for this User Pool? → y
+  12. Enter the minimum password length for this User Pool → 任意
+  13. Select the password character requirements for your userpool → 任意
+  14. Specify the app's refresh token expiration period (in days) → 30（任意）
+  15. Do you want to specify the user attributes this app can read and write? → n
+  16. Do you want to enable any of the following capabilities? → 任意
+  17. Do you want to use an OAuth flow? → No
+  18. Do you want to configure Lambda Triggers for Cognito? → n
+
 - AppSync 初期設定  
   `amplify add api`
 
