@@ -4,9 +4,11 @@ import { LoginComponent } from './SamplePrj/pages/login/login.component';
 
 import { AdminLayoutComponent } from './SamplePrj/layouts/admin-layout/admin-layout.component';
 import { UserListComponent } from './SamplePrj/pages/user/user-list.component';
+import { TopComponent } from './SamplePrj/pages/top/top.component';
 
 import { LoginGuard } from './shared/guard/login.guard';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { ManagerGuard } from './shared/guard/manager.guard';
 
 const routes: Routes = [
   {
@@ -21,8 +23,13 @@ const routes: Routes = [
 
     children: [
       {
+        path: 'top',
+        component: TopComponent,
+      },
+      {
         path: 'user',
         component: UserListComponent,
+        canActivate: [ManagerGuard],
       },
       // {
       //   path: 'settings',

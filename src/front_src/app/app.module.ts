@@ -11,6 +11,7 @@ import { ComponentsModule } from './SamplePrj/components/components.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './SamplePrj/pages/login/login.component';
 import { AdminLayoutComponent } from './SamplePrj/layouts/admin-layout/admin-layout.component';
+import { TopComponent } from './SamplePrj/pages/top/top.component';
 import { UserListComponent } from './SamplePrj/pages/user/user-list.component';
 
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
@@ -28,6 +29,7 @@ Amplify.configure(awsExports);
     AppComponent,
     LoginComponent,
     AdminLayoutComponent,
+    TopComponent,
     UserListComponent,
   ],
   imports: [
