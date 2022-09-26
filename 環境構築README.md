@@ -96,23 +96,3 @@
   6. Do you want to generate/update all possible GraphQL operations - queries, mutations ～ → y
   7. Enter maximum statement depth [increase from default if your schema is deeply nested] → 2
   8. Enter the file name for the generated code → src\front_src\app\API.service.ts
-
-### AWS Amplify 環境関連
-
-- 現在の環境確認  
-  `amplify env list`
-
-- 新規環境追加（本番用、検証用、開発用などが考えられる)  
-  `amplify env add`
-
-  1.  環境名 → 任意 （例：stag）
-  2.  認証方法 → AWS profile
-  3.  プロファイル選んで → amplify-account
-  4.  ※環境作るとバックエンドが自動的に新しく作った環境に切り替わるので注意
-  5.  `amplify push` 新しい環境でバックエンドをデプロイ
-
-- 環境の切り替え  
-  `amplify env checkout {環境名}`
-
-- 環境の削除  
-  `amplify env remove {環境名}`

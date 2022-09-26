@@ -52,3 +52,23 @@
 
 - `amplify status` サーバー側リソース全体の状況を確認できます。
 - `amplify status api -acm {テーブル名}` DynamoDB テーブル毎のアクセス権限が確認できます。
+
+## AWS Amplify 環境関連
+
+- 現在の環境確認  
+  `amplify env list`
+
+- 新規環境追加（本番用、検証用、開発用などが考えられる)  
+  `amplify env add`
+
+  1.  環境名 → 任意 （例：stag）
+  2.  認証方法 → AWS profile
+  3.  プロファイル選んで → amplify-account
+  4.  ※環境作るとバックエンドが自動的に新しく作った環境に切り替わるので注意
+  5.  `amplify push` 新しい環境でバックエンドをデプロイ
+
+- 環境の切り替え  
+  `amplify env checkout {環境名}`
+
+- 環境の削除  
+  `amplify env remove {環境名}`
