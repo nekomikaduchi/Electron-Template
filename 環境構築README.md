@@ -37,7 +37,7 @@
      - ビルドタイプ : javascript
      - フレームワーク : angular
      - ソースディレクトリ : src/front_src
-     - 配布先ディレクトリ : dist/{Angular プロジェクト名} （例：dist/SamplePrj）
+     - 配布先ディレクトリ : dist
      - ビルドコマンド : npm.cmd run-script build
      - スタートコマンド : ng serve
 
